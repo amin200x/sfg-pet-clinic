@@ -19,6 +19,7 @@
     <description>SFG Pet Clinic Project</description>
     <properties>
         <java.version>11</java.version>
+
     </properties>
 
 
@@ -33,13 +34,15 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
         <scm>
             <developerConnection>scm:git:https://github.com/amin200x/sfg-pet-clinic.git</developerConnection>
 
-    <tag>HEAD</tag>
   </scm>
 </project>
