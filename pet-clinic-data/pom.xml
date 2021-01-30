@@ -12,8 +12,8 @@
     <artifactId>pet-clinic-data</artifactId>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
     <dependencies>
@@ -60,7 +60,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>guru.springfamework.sfgpetclinic.SfgPetClinicApplication</mainClass>
+                   <!-- <mainClass>guru.springfamework.sfgpetclinic.SfgPetClinicApplication</mainClass> -->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
