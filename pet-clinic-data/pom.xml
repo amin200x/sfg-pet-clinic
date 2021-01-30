@@ -58,7 +58,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                   <!-- <mainClass>guru.springfamework.sfgpetclinic.SfgPetClinicApplication</mainClass> -->
+                   <!-- <mainClass>SfgPetClinicApplication</mainClass> -->
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
