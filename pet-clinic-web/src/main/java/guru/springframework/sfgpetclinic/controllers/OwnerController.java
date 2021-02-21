@@ -4,14 +4,14 @@ import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.websocket.server.PathParam;
 
 @RequestMapping("/owners")
 @Controller
+
 public class OwnerController {
     private final OwnerService ownerService;
 
@@ -25,10 +25,10 @@ public class OwnerController {
         return "owners/index";
     }
 
-    @RequestMapping({"/find"})
+   /* @RequestMapping({"/find"})
     public String findOwners() {
         return "notimplemented";
-    }
+    }*/
 
     @RequestMapping({"/{id}"})
     public ModelAndView showOwner(@PathVariable String id) {
@@ -36,7 +36,24 @@ public class OwnerController {
         modelAndView.addObject("owner", ownerService.findById(Long.valueOf(id)));
         return modelAndView;
     }
+    @RequestMapping({"/find"})
+    public ModelAndView findOwners() {
+        ModelAndView modelAndView = new ModelAndView("/owners/findowner");
+        return modelAndView;
+    }
+    @RequestMapping({"/findbylastname"})
+    public ModelAndView findOwnerByLastName(@PathParam("lastName") String lastName) {
+        System.out.println(lastName);
+        ModelAndView modelAndView = new ModelAndView("/owners/ownerdetail");
+        Owner foundOwner = ownerService.findByLastName(lastName);
+        if (foundOwner==null) {
+            foundOwner = new Owner();
+            foundOwner.setLastName("Not Found!!!");
+        }
 
+        modelAndView.addObject("owner", foundOwner);
+        return modelAndView;
+    }
     @RequestMapping({"/{id}/delete"})
     public String deleteOwner(@PathVariable Long id) {
         ownerService.deleteById(id);

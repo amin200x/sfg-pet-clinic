@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body}, 'owners')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Form</title>
+</head>
+<body>
+<form class="navbar-form" action="/owners/findbylastname" th:action="@{/owners/findbylastname}" method="get">
+    <div>
+
+        <label> Last Name:</label>
+
+        <input class="form-control" type="text" name="lastName" id="lastName">
+    </div>
+
+    <input class="btn btn-success" type="submit" th:value="'Find'" value="Find"/>
+</form>
+
+</body>
+</html>
