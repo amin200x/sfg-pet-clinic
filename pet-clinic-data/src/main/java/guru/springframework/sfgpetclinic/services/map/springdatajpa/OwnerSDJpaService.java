@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+
 @Service
 @Profile("springdatajpa")
 public class OwnerSDJpaService implements OwnerService {
@@ -38,7 +39,25 @@ public class OwnerSDJpaService implements OwnerService {
 
     @Override
     public Owner save(Owner owner) {
-        return ownerRepository.save(owner);
+        Owner savedOwner = new Owner();
+        if (owner.getId() == null) {
+            savedOwner = ownerRepository.save(owner);
+        } else {
+            Long id = owner.getId();
+            Optional<Owner> optionalOwner = ownerRepository.findById(id);
+            if (optionalOwner.isPresent()) {
+                Owner saveOwner = optionalOwner.get();
+                saveOwner.setFirstName(owner.getFirstName());
+                saveOwner.setLastName(owner.getLastName());
+                saveOwner.setAddress(owner.getAddress());
+                saveOwner.setCity(owner.getCity());
+                saveOwner.setTelephone(owner.getTelephone());
+                 savedOwner = ownerRepository.save(saveOwner);
+            }
+
+
+        }
+        return savedOwner;
     }
 
     @Override

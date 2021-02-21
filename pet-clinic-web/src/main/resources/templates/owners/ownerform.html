@@ -5,8 +5,30 @@
     <title>Owner Form</title>
 </head>
 <body>
-<form th:object="${owner}" >
+<form class="navbar-form" action="/owners" th:action="@{/owners}" th:object="${owner}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        <label>FirstName:</label>
 
+        <input class="form-control" type="text" th:field="*{firstName}">
+        <br/>
+        <label> Last Name:</label>
+
+        <input class="form-control" type="text" th:field="*{lastName}">
+    </div>
+    <div>
+        <label>Address:</label>
+
+        <input class="form-control" type="text" th:field="*{address}">
+        <br/>
+        <label> City:</label>
+
+        <input class="form-control" type="text" th:field="*{city}">
+        <br/><label> Phone:</label>
+
+        <input class="form-control" type="text" th:field="*{telephone}">
+    </div>
+    <input class="btn btn-success" type="submit" th:value="'Submit'" value="Submit"/>
 </form>
 
 </body>
