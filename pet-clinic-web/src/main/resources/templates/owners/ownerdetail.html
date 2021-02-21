@@ -31,6 +31,7 @@
 <br/>
 <br/>
 <h2>Pets and Visit</h2>
+<a class="btn btn-default" href="/owners/${owner.id}/pets/new" th:href="@{'/owners/'+${owner.id}+'/pets/new'}">New Pet</a>
 <table class="table table-striped">
     <tr th:each="pet : ${owner.pets}">
         <td valign="top">
@@ -41,9 +42,17 @@
                 <dd><b th:text="*{pet.birthDate}"></b></dd>
                 <dt>Type</dt>
                 <dd><b th:text="*{pet.petType.name}"></b></dd>
+
+        <dd>
+            <a class="btn btn-success" role="button" href="/pets/${pet.id}/update"
+               th:href="@{'/pets/'+${pet.id}+'/update'}">Edit</a>
+            <a class="btn btn-danger" role="button" href="/pets/${pet.id}/delete"
+               th:href="@{'/owners/'+ ${owner.id} +'/pets/'+${pet.id}+'/delete'}">Delete</a>
+        </dd>
             </dl>
         </td>
         <td>
+            <a class="btn btn-default" href="/pets/${pet.id}/visits/new" th:href="@{'/pets/'+${pet.id}+'/visits/new'}">New Visit</a>
             <table class="table-condensed">
                 <thead>
                 <tr>

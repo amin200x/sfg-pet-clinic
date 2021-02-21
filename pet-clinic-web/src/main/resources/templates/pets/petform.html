@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body}, 'owners')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Form</title>
+</head>
+<body>
+<form class="navbar-form" action="/pets" th:action="@{/pets}" th:object="${pet}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{owner.id}">
+    <div>
+        <label>Name:</label>
+
+        <input class="form-control" type="text" th:field="*{name}">
+        <br/>
+        <label> Birth Date:</label>
+
+        <input class="form-control" type="date" th:field="*{birthDate}">
+    </div>
+    <div>
+        <label>Type:</label>
+        <input type="hidden" th:field="*{petType.id}">
+        <input class="form-control" type="text" th:field="*{petType.name}">
+        <br/>
+
+    </div>
+    <input class="btn btn-success" type="submit" th:value="'Submit'" value="Submit"/>
+</form>
+
+</body>
+</html>
