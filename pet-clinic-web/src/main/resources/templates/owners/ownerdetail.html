@@ -64,13 +64,12 @@
                 <tr th:each="visit : ${pet.visits}">
                     <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}"></td>
                     <td th:text="${visit.description}"></td>
-                </tr>
-                <tr>
+
                     <td>
-                        <a class="btn btn-success" role="button" href="/owners/${owner.id}/update"
-                           th:href="@{'/visits/'+${owner.id}+'/update'}">Edit</a>
-                        <a class="btn btn-danger" role="button" href="/owners/${owner.id}/update"
-                           th:href="@{'/owners/'+${owner.id}+'/update'}">Delete</a>
+                        <a class="btn btn-success" role="button" href="/visits/${visit.id}/update"
+                           th:href="@{'/visits/'+${visit.id}+'/update'}">Edit</a>
+                        <a class="btn btn-danger" role="button" href="/visits/${visit.id}/delete"
+                           th:href="@{'/visits/'+${visit.id}+'/delete'}">Delete</a>
                     </td>
                 </tr>
             </table>

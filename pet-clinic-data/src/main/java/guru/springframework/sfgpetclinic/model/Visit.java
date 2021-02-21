@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class Visit extends BaseEntity{
     @Column(name = "date")
    // @DateTimeFormat(pattern = "yy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
     @Column(name = "description")
     private String description;
